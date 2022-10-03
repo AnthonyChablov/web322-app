@@ -18,7 +18,7 @@ const dataService = require('./data-service');
 app.use(express.static('public'));
 
 //routes
-app.get(('/home'), (req,res) => {
+app.get(('/'), (req,res) => {
     res.sendFile(path.join( __dirname, "/views/home.html" ));
 });
 
@@ -49,6 +49,6 @@ app.get('*', (req, res) => {
 });
 
 dataService.initalize()
-    .then(() => app.listen(process.env.PORT | 8080, () => console.log("Express http server listening on 8080")))
+    .then(() => app.listen(process.env.PORT || 8080, () => console.log("Express http server listening on 8080")))
         .catch((err) => console.log(`${err}, Error has occured`))
 
