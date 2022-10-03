@@ -18,27 +18,27 @@ const dataService = require('./data-service');
 app.use(express.static('public'));
 
 //routes
-app.get(('/'), (req,res) => {
+app.get('/', (req,res) => {
     res.sendFile(path.join( __dirname, "/views/home.html" ));
 });
 
-app.get(('/about'), (req,res) => {
+app.get('/about', (req,res) => {
     res.sendFile(path.join( __dirname, "/views/about.html" ));
 });
 
-app.get(('/employees'), (req,res) => {
+app.get('/employees', (req,res) => {
     dataService.getAllEmployees()
         .then((data) => res.json(data))
         .catch((err) => { return {"message" : err} })
 });
 
-app.get(('/departments'), (req,res)=>{
+app.get('/departments', (req,res)=>{
     dataService.getDepartments()
         .then((data) => res.json(data))
         .catch((err) => { return {"message" : err} })
 });
 
-app.get(('/managers'), (req,res) => {
+app.get('/managers', (req,res) => {
     dataService.getManagers()
         .then((data) => res.json(data))
         .catch((err) => { return {"message" : err} })
