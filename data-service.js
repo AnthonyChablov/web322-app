@@ -44,11 +44,24 @@ const getManagers = () =>{
     })
 }
 
+const addPost = (postData)=>{
+    return new Promise((resolve, reject)=>{
+        postData.published = postData.published ? false : true; 
+        postData.id = posts.length+1;
+        posts.push(postData);
+        postData
+            ? reject('no results returned')
+            : resolve(postData);
+    })
+}
+
 module.exports = {
     initalize,
     getManagers,
     getDepartments, 
     getAllEmployees, 
     departments, 
-    employees
+    employees,
+    addPost,
+
  }
